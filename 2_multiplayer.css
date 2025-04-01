@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    background-color: #ADD8E6; 
+}
+
+#container {
+    text-align: center; 
+    position: relative;
+    top: 0px;
+}
+
+#title {
+    font-family: 'Roboto Slab', serif; 
+    font-size: 3rem;
+    font-weight: 1000; 
+    color: black;
+    margin: 0;
+    transform: translateX(3px);
+}
+
+#subtitle {
+    font-family: 'Georgia', serif; 
+    font-size: 1.5rem;
+    font-weight: 400; 
+    color: black;
+    margin: 0.2; 
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+#button {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #ADD8E6; 
+    border: 2px solid black;
+    font-size: 16px; 
+    font-weight: 400;
+    padding: 10px 60px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 15px; 
+    transition: background-color 0.3s; 
+    width: 180px;
+}
+
+
+.button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    transform: translateX(-20px);
+}
+
+.wrapper .dynamic-txts {
+    line-height: 40px; 
+    height: 40px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.dynamic-txts li {
+    list-style: none;
+    font-family: 'Georgia', serif; 
+    font-size: 30px;
+    font-weight: 400; 
+    color: black;
+    margin: 0; 
+    animation: slide 70s steps(7)
+    infinite;
+}
+
+.dynamic-txts li {
+    position: relative;
+}
+  
+.dynamic-txts li::after {
+    content: ""; 
+    position: absolute;
+    left: 0; 
+    height: 100%;
+    width: 100%; 
+    background-color: #ADD8E6;
+    border-left: 2px solid black; 
+    animation: typing 10s steps(50) 
+    infinite; 
+}
+
+@keyframes typing {
+    40%,
+    60% {
+        left: calc(100% + 1px);
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes slide {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -280px; 
+    }
+}

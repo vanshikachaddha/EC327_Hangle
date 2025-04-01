@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Web Project</title>
+    <link rel="stylesheet" href="3_easymode.css">
+    <script type = "text/javascript" src = "3_darkmode.js"defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    
+       <!-- Navigation Bar -->
+       <nav class="navbar">
+        <div class="navbar-left">
+            <a href="1_mainpage.html" class="nav-item" id="Home-link">
+                <img src="images/home.png" alt="Home" style="width: 30px; height: auto;">
+            </a>
+
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="nav-item" id="hints-link">
+                <img src="images/hint.png" alt="Hints" style="width: 30px; height: auto;">
+            </a>
+            <a href="#" class="nav-item" id="settings-link">
+                <img src="images/settings.png" alt="Settings" style="width: 30px; height: auto;">
+            </a>
+            <a href="#" class="nav-item" id="guide-link">
+                <img src="images/guide.png" alt="Guide" style="width: 30px; height: auto;">
+            </a>
+        </div>
+    </nav>
+    
+     <!-- Guide -->
+     <div id="guide-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-guide">&times;</span>
+            <h2>Guide</h2>
+            <p>Here's everything you need to know to get started.</p>
+            <ul>
+                <li>The goal is to guess the hidden word by selecting letters.</li>
+                <li>Each time you guess a letter, the game will provide feedback on your guess</li>
+                <img src="images/ex1.png" alt="Example 1" class="guide-image">
+                <ul id = "color-rules">
+                    <li>
+                        <b>Green:</b> The letter is correct and in the correct position.
+                    </li>
+                    <li><b>Yellow:</b> The letter is in the word but in the wrong position.</li>
+                    <li><b>Gray:</b> The letter is not in the word.</li>
+                </ul>
+                <li id="text-rules">
+                    Each wrong guess adds a piece to the hangman. 
+                </li>
+                
+                <li id="text-rules">
+                    <b>If you guess all the letters correctly, you win!</b> 
+                </li>
+            </ul>
+    
+            <p>Challenge Mode</p>
+            <ul>
+                <li>In Challenge Mode, letters you've guessed incorrectly won't turn gray, so you'll need to remember your guesses as you play. </li>
+            </ul>
+            
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-settings">&times;</span>
+            <h2>Settings</h2>
+            <p>Make this game your own</p>
+            <ul>
+                <li>Sound
+                    <div class="sound-slider-container">
+                        <label class="sound-slider-toggle">
+                            <input type="checkbox" id="sound-slider">
+                            <span class="sound-slider"></span>
+                        </label>
+                    </div>
+                </li>
+                <div id="subtitle"> Prefer a quieter experience? Toggle sound settings. </div>
+                
+                <li>Dark Mode
+                    <div class="darkmode-slider-container">
+                        <label class="darkmode-slider-toggle">
+                            <input type="checkbox" id="darkmode-slider">
+                            <span class="darkmode-slider"></span>
+                        </label>
+                    </div>
+                </li>
+                <div id="subtitle"> Dark mode for a relaxed gaming experience. </div>
+
+
+                <li>Challenge Mode
+                    <div class="challenge-slider-container">
+                        <label class="challenge-slider-toggle">
+                            <input type="checkbox" id="challenge-slider">
+                            <span class="challenge-slider"></span>
+                        </label>
+                    </div>  
+                </li>
+                <div id="subtitle"> Remember the letters you've already guessed wrong. </div>
+
+
+            </ul>          
+
+        </div>
+    </div>
+
+    <!-- Hints -->
+    <div id="hints-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-hints">&times;</span>
+            <h2>Hint</h2>
+            <p>Follow these tips to make the most of your hints</p>
+            <ul>
+                <li>You can reveal a letter by clicking "Reveal a Letter".</li>
+                <li>Use "Additional Life" to reduce your penalty chances.</li>
+                <li>Plan your guesses strategically before using hints.</li>
+            </ul>
+            <div class="hint-buttons-container">
+                <button id="show-clue" class="hint-button">Show Clue</button>
+                <button id="reveal-letter" class="hint-button">Reveal a Letter</button>
+            </div>
+            <p id="clue-content" style="display: none;"></p>
+            <button id="remove-body-part" class="hint-button">Additional Life: Remove a Body Part</button>
+        </div>
+    </div>
+    <main>
+
+        <!-- Game box -->
+        <div class="box">
+
+            <div id="hangman-container">
+                <img src="images/empty.png" alt="Gallows" class="body-part" style="opacity: 1;" id="empty"> <!-- Always visible -->
+                <img src="images/headx.png" alt="Head" class="body-part" id="head">
+                <img src="images/body.png" alt="Body" class="body-part" id="body">
+                <img src="images/right_arm.png" alt="Right Arm" class="body-part" id="rarm">
+                <img src="images/left_arm.png" alt="Left Arm" class="body-part" id="larm">
+                <img src="images/right_leg.png" alt="Right Leg" class="body-part" id="rleg">
+                <img src="images/left_leg.png" alt="Left Leg" class="body-part" id="lleg">
+            </div>
+    
+                <u1 class = "display">
+                </u1>
+        </div>
+        
+        <!-- Keyboard Section -->
+        <div id="keyboard_container">
+            <!-- Alphabetical keys -->
+             <div class = "keyboard_row"> 
+             </div>
+            <div class = "keyboard_row"> 
+            </div>
+
+            <div class = "keyboard_row">
+            </div>            
+        
+        </div>
+    </main>
+    
+    <footer>
+        <script src="3_menubar.js" defer></script>
+        <script src="3_easywordbank.js" defer></script>
+        <script src="3_easymode.js" defer></script>
+    </footer>
+</body>
+</html>
